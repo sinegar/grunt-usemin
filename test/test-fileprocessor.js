@@ -79,6 +79,18 @@ describe('FileProcessor', function() {
 			assert.equal(result, '  <script src="foo.js"><\/script>');
 		});
 
+		it('should replace remove blocks with nothing', function() {
+			var fp = new FileProcessor('html',{});
+			var block = {
+				//dest: 'foo.css',
+				type: 'remove',
+				indent: '  '
+			};
+
+			var result = fp.replaceWith(block);
+			assert.equal(result, '');
+		});
+
     it('should preserve defer attribute (JS)', function () {
       var fp = new FileProcessor('html',{});
       var block = {
